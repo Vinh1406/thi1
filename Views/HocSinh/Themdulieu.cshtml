@@ -1,0 +1,59 @@
+﻿@model WebApplication2.Models.HocSinh
+@{
+    ViewBag.Title = "Themdulieu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Themdulieu</h2>
+
+@using (Html.BeginForm("Themdulieu", "HocSinh", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-select">
+        <h4>Hoc sinh</h4>
+
+        <div>
+            @Html.LabelFor(model => model.sbd);
+            @Html.EditorFor(model => model.sbd, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.sbd, "", new { @class = "text-danger" })
+        </div>
+        <div>
+            @Html.LabelFor(model => model.hoten);
+            @Html.EditorFor(model => model.hoten, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.hoten, "", new { @class = "text-danger" })
+        </div>
+        <div>
+            @Html.Label("Ảnh dự thi")
+            <img src="~/Images/no-image.jpg" id="output" width="180" height="200" />
+            <input type="file" name="ImageFile" onchange="loadFile(event)" />
+        </div>
+        <div>
+            @Html.LabelFor(model => model.malop, "Ma Lop")
+            @Html.DropDownList("malop", null, "--chonlop--", new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.malop, "", new { @class = "text-danger" })
+
+        </div>
+        <div>
+            @Html.LabelFor(model => model.diemthi);
+            @Html.EditorFor(model => model.diemthi, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.diemthi, "", new { @class = "text-danger" })
+        </div>
+        <button type="submit" class="btn btn-primary">Them</button>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Quay lại", "Xemdanhsach")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+<script>
+    function loadFile(event) {
+        var output = document.getElementById('output');
+        output.src = URL.createObjectURL(event.target.files[0]);
+    }
+</script>
+
+

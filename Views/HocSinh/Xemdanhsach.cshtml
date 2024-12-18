@@ -1,0 +1,49 @@
+﻿@model IEnumerable<WebApplication2.Models.HocSinh>
+@{
+    ViewBag.Title = "Xemdanhsach";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Xemdanhsach</h2>
+@using (Html.BeginForm())
+            {
+                <p>
+                    tim hoc sinh: @Html.TextBox("searchString")
+                    <input type="submit" value="Tim"/> 
+                </p>
+            }
+
+
+<table class="table">
+    <tr>
+        <th>Tên lớp</th>
+        <th>Họ tên </th>
+        <th>Ảnh dự thi</th>
+        <th>Diểm thi</th>
+        <th></th>
+    </tr>
+    @foreach(var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem =>  item.LopHoc.tenlop)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem=> item.hoten)
+                    </td>
+                    <td>
+                       @{ 
+                           string path = "~/Images/" + item.anhduthi;
+                       }
+                        <img src="@Url.Content(path)" width="100" class="img"/>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem=> item.diemthi)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Xóa","XoaDuLieu",new {id=item.sbd})
+                        @Html.ActionLink("sửa","Edit",new {id=item.sbd})
+                    </td>
+                </tr>
+            }
+</table>

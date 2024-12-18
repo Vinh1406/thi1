@@ -1,0 +1,23 @@
+﻿@model IEnumerable<WebApplication2.Models.ThongKeViewModel>
+
+<h2>Thống Kê Lớp Học Sinh</h2>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Lớp ID</th>
+            <th>Tên Lớp</th>
+            <th>Số Lượng Học Sinh</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.LopID</td>
+                <td>@item.LopTen</td>
+                <td>@item.SoHocSinh</td>
+            </tr>
+        }
+    </tbody>
+</table>

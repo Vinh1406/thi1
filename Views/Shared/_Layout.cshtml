@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <style>
+        .banner {
+            background-color: #FF6601;
+            height: 80px
+        }
+
+        .text {
+            color: #FEFEFE;
+            font-family: Tahoma;
+            font-weight: bold;
+            text-align: center;
+            justify-content: center;
+            line-height: 80px;
+        }
+
+        .link-data {
+            display: flex;
+            justify-content:flex-end;
+            padding-top:10px;
+
+            background-color: #BE0001;
+        }
+     /*   body {
+            display: block;
+            justify-content: right;
+        }*/
+    </style>
+</head>
+<body>
+    <div class="banner">
+        <h1 class="text">BÀI KIỂM TRA ĐIỀU KIỆN SỐ 2 - D01</h1>
+    </div>
+    <div class="link-data">
+        <p style="color: white; margin-right: 5px;">@Html.ActionLink("Xem danh sách", "Xemdanhsach", "HocSinh", new { area = "" }, new { @class = "nav-link" })</p> &nbsp; |
+        <p style="color: white; margin-right: 20px; margin-left: 5px; ">@Html.ActionLink("Thêm dữ liệu", "Themdulieu", "HocSinh", new { area = "" }, new { @class = "nav-link" })</p>|
+        <p style="color: white; margin-right: 20px; margin-left: 5px; ">@Html.ActionLink("Thống kê", "ThongKe", "HocSinh", new { area = "" }, new { @class = "nav-link" })</p>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
